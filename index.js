@@ -24,7 +24,7 @@ app.use(
 app.use(express.json());
 app.use(express.static(__dirname));
 app.use(cookieParser());
-app.use('/', require('./routes'));
+app.use('/', require('./routes/initial'));
 
 
 mongoose.connect(MONGODB_URI);
