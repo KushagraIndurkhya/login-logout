@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('./models/user');
+
+// Index route
 router.get('/', (req, res) => {
     session = req.session;
     if (session.email) {
@@ -9,7 +11,7 @@ router.get('/', (req, res) => {
         res.sendFile('./views/index.html', { root: __dirname })
 });
 
-
+// User Login
 router.get('/login', function(req, res) {
     if (session.email) {
         res.send("You Are already Logged in");
@@ -40,7 +42,7 @@ router.get('/login', function(req, res) {
 
 
 });
-
+// New User Registration
 
 router.post('/signup', function(req, res) {
     let newUser = new User();
@@ -60,6 +62,7 @@ router.post('/signup', function(req, res) {
     });
 });
 
+//Logout and clear session
 router.get('/logout', (req, res) => {
     req.session.destroy(err => {
         if (err) {
