@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user');
+const User = require('./models/user');
 router.get('/', (req, res) => {
     session = req.session;
     if (session.email) {
         res.send("Welcome " + session.email + " <a href = \'/logout' > click to logout </a>");
     } else
-        res.sendFile('views/index.html', { root: __dirname })
+        res.sendFile('./views/index.html', { root: __dirname })
 });
 
 

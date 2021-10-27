@@ -1,11 +1,12 @@
 const PORT = process.env.PORT || 3000;
-const MONGODB_URI = process.env.MONGODB_URI
+const MONGODB_URI = process.env.MONGODB_URI;
 var express = require('express'),
     app = express(),
     session = require('express-session'),
     mongoose = require('mongoose');
 MongoDbStore = require('connect-mongo');
 cookieParser = require("cookie-parser");
+app.use(express.static(__dirname + '/public'));
 
 
 app.use(express.urlencoded());
@@ -24,7 +25,7 @@ app.use(
 app.use(express.json());
 app.use(express.static(__dirname));
 app.use(cookieParser());
-app.use('/', require('./routes/initial'));
+app.use('/', require('./routes'));
 
 
 mongoose.connect(MONGODB_URI);
