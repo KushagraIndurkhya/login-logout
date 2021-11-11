@@ -1,7 +1,7 @@
 // Constants
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
-const MY_SECRET = process.env.MY_SECRET;
+const MY_SECRET = process.env.MY_SECRET || 'mysecret';
 
 // Setting up the server
 
@@ -30,6 +30,7 @@ app.use(express.static(__dirname));
 app.use(cookieParser());
 //Using routes
 app.use('/', require('./routes'));
+app.use('/api', require('./api_routes'));
 
 //Connecting to MongoDB
 mongoose.connect(MONGODB_URI);
